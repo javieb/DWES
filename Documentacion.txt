@@ -1,8 +1,0 @@
-Ejercicio 3. En este ejercicio se trata de utilizar git status para comprobar el estado del repo-
-sitorio antes y después de crear y modificar indice.txt. Luego se añadirá el archivo con git add
-a la zona stage.
-
-Ejercicio 4. En este ejercicio se sube el commit (git commit -m "Añadido el índice del libro") al
-repositorio central con el mensaje correspondiente y se comprueba el estado (git status). No hay
-nada en la zona stage.
- 
