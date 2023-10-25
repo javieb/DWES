@@ -6,8 +6,8 @@ $db = mysqli_connect('localhost', 'root', '1234', 'mysitedb') or die('Fail');
 <?php
 $pelicula_id = $_POST['pelicula_id']; //Estas variables son las que se pasan a través del archivo detail.php por POST
 $comentario = $_POST['new_comment'];
-$query = "INSERT INTO tComentarios(comentario, id_pelicula, usuario_id)
-VALUES ('".$comentario."',".$pelicula_id.",NULL);
+$query = "INSERT INTO tComentarios(comentario, id_pelicula, usuario_id,fecha)
+VALUES ('".$comentario."',".$pelicula_id.",NULL,now());
 mysqli_query($db, $query) or die('Error'); //Se insertan los valores a la tabla tComentarios desde el query
 echo "<p>Nuevo comentario ";
 echo mysqli_insert_id($db); //Muestra el id del comentario añadido
