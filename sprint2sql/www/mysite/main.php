@@ -3,11 +3,50 @@
 ?>
 <!DOCTYPE html>
 <html>
+<head>
+<title>Main</title>
+<meta charset="UTF-8">
+<style>
+        table{
+            border: 2px solid black;
+            background-color: rgb(130, 168, 238) ;
+	    margin: auto;
+        }
+        th{
+	    border: inherit;
+            background-color: blueviolet;
+        }
+	td{
+	    border: 1px solid blueviolet;
+	    text-align: center;
+	    padding: 15px;
+	}
+    </style>
+</head>
 <body>
-<h1>Conexión establecida</h1>
-<?php
-$query = 'SELECT * FROM tPeliculas';
-mysqli_query($db, $query) or die('Query error');
-?>
+	<?php
+        if (!isset($_GET['pelicula_id'])){ //Pelicula_id va a ser el nombre de la variable que se pasa en la solicitud GET
+           echo "<table>"; //Tabla de los datos de las películas (ID, cartel, título, director y género)
+		echo "<tr>";
+		echo "<th>ID</th>";
+		echo "<th>Cartel</th>";
+		echo "<th>Título</th>";
+		echo "<th>Director</th>";
+		echo "<th>Género</th>";
+		echo "</tr>";
+            $query = "SELECT * FROM tPeliculas"; //En este caso se seleccionan todas las filas de la tabla
+            $result = mysqli_query($db, $query) or die("Query error");
+            while($row = mysqli_fetch_array($result)){ //Se geenera un bucle hasta que no haya filas
+                echo "<tr>"; //Nueva fila
+                echo "<td><a href='/detail.php?pelicula_id=".$row["id_pelicula"]."' target='_self'>".$row["id_pelicula"]."</a></td>"; //Generada una columna con el ID de la película y un enlace a detail.php con su correspondiente solicitud GET
+		echo "<td><img src='".$row["url_imagen"]."' alt='".$row["nombre"]."' height='340px' width='220px' border='2px' hspace='30px'></td>"; //Generada una columna con la imagen de la película y sus dimensiones
+		echo "<td>".$row["nombre"]."</td>";
+		echo "<td>".$row["director"]."</td>";	//Estas son COLUMNAS del nombre, director y género de la película respectivamente
+		echo "<td>".$row["genero"]."</td>";
+		echo "</tr>";
+            }
+    	   echo "</table>";
+        }
+	?>
 </body>
 </html>
