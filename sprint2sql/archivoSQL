@@ -1,0 +1,46 @@
+use mysitedb;
+
+create table tUsuarios(
+	id int primary key auto_increment,
+	nombre varchar(50),
+    apellidos varchar(100),
+    email varchar(200) unique,
+    contrasenha varchar(200)
+);
+insert into tUsuarios values(null,"javier","esmoris","javierEB@email.com","1234");
+insert into tUsuarios values(null,"juan","garcía","juang@email.com","1234");
+insert into tUsuarios values(null,"marta","broncano","martab@email.com","4321");
+insert into tUsuarios values(null,"admin","admin","admin@email.com","000");
+insert into tUsuarios values(null,"carlos","galán","carlosg@email.com","0123");
+
+
+create table tPeliculas (
+	id_pelicula integer primary key auto_increment,
+    nombre varchar(50),
+    url_imagen varchar(200),
+    director varchar(100),
+    genero varchar(100)
+);
+insert into tPeliculas values(null,"Reservoir dogs","https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQlAfee-wOfz-QVtvEEAJS7KRg8Yw4VGXblxOpi4Ygf9jDtNrJQ","Quentin Tarantino","Drama/Crimen");
+insert into tPeliculas values(null,"Pulp Fiction","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZUTnNVTW8xT3y97qIZ8op9FNtIXzmp6TPDcC0qpqTvvKNV9YT","Quentin Tarantino","Drama");
+insert into tPeliculas values(null,"Interestellar","https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT_RccL1NBnzoF49rygF-O0YRB2-kIsi_u2OY4nhmV9hRCWbHok","Christopher Nolan","Drama/Ciencia ficción");
+insert into tPeliculas values(null,"Inception","https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTfZzcNIKne1CvXHbUn1q-wvuB7-eVp93ZmL2oI2sW0COs0OdcW","Christopher Nolan","Acción/Ciencia ficción");
+insert into tPeliculas values(null,"Ciudadano Kane","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRPez7KMgeqSIgCPbRNZI1Fgp2nIcbeyJgVSM_E8JOKdUgPgx0C","Orson Welles","Drama/Misterio");
+
+create table tComentarios(
+	id_comentario int primary key auto_increment,
+    comentario varchar(2000),
+    usuario_id int,
+    id_pelicula int not null
+    );
+    
+insert into tComentarios values(null,"Buena película, le doy un 8. Me gusta la habilidad para narrar varias historias distintas y crear un punto de divergencia entre ellas.",0,1);
+insert into tComentarios values(null,"Es una película larga y se necesita paciencia para acabarla. Sin embargo, el hilo principal se mantiene en suspense hasta el final, lo que hace que sea un poco más interesante e, incluso, te acabe gustando.",2,4);
+insert into tComentarios values(null,"Me gustó el género de comedia que da, es un buen toque que permanece hasta el final e, incluso, hace posible un buen giro dramatical en el final.",1,0);
+insert into tComentarios values(null,"Soy científico y puedo corroborar que la gran parte de la película es científicamente posible, aunque hay alguna flipada.",3,2);
+insert into tComentarios values(null,"No entendí nada, no se qué de los sueños y una peonza rara que no para de girar. Nolan está loco.",4,3);
+
+alter table tComentarios add constraint foreign key(usuario_id) references tUsuarios(id);
+alter table tPeliculas add constraint foreign key(id_pelicula) references tPeliculas(id_pelicula)
+
+
