@@ -12,11 +12,11 @@
         text-align: center;
         color: black;
         background-color: bisque;
+	width: 300px;
+	margin: auto;
+	margin-bottom: 20px;
 
        }
-       #cajaTitulo{
-	 float: center;
-	}
        #cajaComentarios *{
 		text-align: left;
 	}
@@ -31,9 +31,7 @@
         $query = "SELECT * FROM tPeliculas where id_pelicula=".$pelicula_id; //Hacemos la query para coger la fila de la película con el ID que se pasó desde main.php
         $result = mysqli_query($db, $query) or die("Query error");
         $only_row = mysqli_fetch_array($result); //Solo va a haber una fila, no se hace loop
-	echo "<div id='cajaTitulo'>";
-        echo "<h1>".$only_row["nombre"]."</h1>"; //Nombre de la película
-	echo "</div>";
+	echo "<h1>".$only_row["nombre"]."</h1>"; //Nombre de la película
 	echo "<img src='".$only_row["url_imagen"]."' alt='".$only_row["nombre"]."' height='340px' width='220px' border='2px' hspace='30px'/>"; //Imagen de la película
         echo "<p>Director: ".$only_row["director"]."&nbsp;&nbsp;&nbsp;&nbsp;Género: ".$only_row["genero"]."</p>"; //Director y género de la película
 	?>

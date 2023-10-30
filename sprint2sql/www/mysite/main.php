@@ -11,15 +11,18 @@
             border: 2px solid black;
             background-color: rgb(130, 168, 238) ;
 	    margin: auto;
+	    border-collapse: collapse;
         }
         th{
 	    border: inherit;
             background-color: blueviolet;
+	    border-collapse: collapse;
         }
 	td{
-	    border: 1px solid blueviolet;
+	    border: 2px solid blueviolet;
 	    text-align: center;
 	    padding: 15px;
+	    border-collapse: collapse;
 	}
     </style>
 </head>
