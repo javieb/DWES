@@ -1,20 +1,26 @@
-adivinanzas = {'adivinanza1': {'frase': '¿Qué cosa es, que cuanto más intensa se hace menos se ve?', 'respuesta': 'La oscuridad'}}
+adivinanza1 = {'adivinanza': '¿Qué cosa es, que cuanto más intensa se hace menos se ve?', 'opciones': """a. El grito\nb. La oscuridad\nc. El agua"""
+               , 'correcta': 'b'}
+adivinanza2 = {'adivinanza': 'Una dama muy delgada y de palidez mortal, que se alegra y se reanima cuando la van a quemar.', 'opciones': """a. Una bruja\nb. Una novia de boda\nc. Una vela"""
+               , 'correcta': 'c'}
+adivinanza3 = {'adivinanza': 'Duros como las piedras, para el perro un buen manjar, y sin ellos no podrías ni saltar ni caminar.', 'opciones': """a. Los huesos\nb. Una piedra \nc. Un muleta"""
+               , 'correcta': 'a'}
 
+adivinanzas = [adivinanza1, adivinanza2, adivinanza3]
 
-print(adivinanzas['adivinanza1']['frase'])
-
-while True:
-    opcion = input('Elige una respuesta: \n a.Los gritos \n b.La oscuridad \n c.El agua')
-    if type(opcion) != str:
-        print('Eso no es una respuesta válida')
-        break
-    else:
-        if opcion.lower() == 'b':
-            print('Correcto!! La respuesta es: '+adivinanzas['adivinanza1']['respuesta'])
-            break
-        else:
-            print('Esa no era la respuesta correcta')
-            break
+if __name__ == '__main__':
+    for i in adivinanzas:
+        while True:
+            opcion = input(i['adivinanza']+'\n'+i['opciones']+'\n')
+            if opcion.lower() != 'a' and opcion.lower() != 'b' and opcion.lower() != 'c':
+                print('Eso no es una respuesta válida')
+                break
+            else:
+                if opcion.lower() == i['correcta']:
+                    print('Correcto!! La respuesta es: '+adivinanza1['correcta'])
+                    break
+                else:
+                    print('Esa no era la respuesta correcta')
+                    break
 
 
 
