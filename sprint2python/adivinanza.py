@@ -8,6 +8,7 @@ adivinanza3 = {'adivinanza': 'Duros como las piedras, para el perro un buen manj
 adivinanzas = [adivinanza1, adivinanza2, adivinanza3]
 
 if __name__ == '__main__':
+    aciertos = 0
     for i in adivinanzas:
         while True:
             opcion = input(i['adivinanza']+'\n'+i['opciones']+'\n')
@@ -17,10 +18,11 @@ if __name__ == '__main__':
             else:
                 if opcion.lower() == i['correcta']:
                     print('Correcto!! La respuesta es: '+adivinanza1['correcta'])
+                    aciertos = aciertos + 1
                     break
                 else:
                     print('Esa no era la respuesta correcta')
                     break
-
+    print('Has acertado '+str(aciertos)+' adivinanza(s))')
 
 
