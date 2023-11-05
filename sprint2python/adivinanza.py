@@ -1,3 +1,5 @@
+import random
+
 adivinanza1 = {'adivinanza': '¿Qué cosa es, que cuanto más intensa se hace menos se ve?', 'opciones': """a. El grito\nb. La oscuridad\nc. El agua"""
                , 'correcta': 'b'}
 adivinanza2 = {'adivinanza': 'Una dama muy delgada y de palidez mortal, que se alegra y se reanima cuando la van a quemar.', 'opciones': """a. Una bruja\nb. Una novia de boda\nc. Una vela"""
@@ -6,10 +8,11 @@ adivinanza3 = {'adivinanza': 'Duros como las piedras, para el perro un buen manj
                , 'correcta': 'a'}
 
 adivinanzas = [adivinanza1, adivinanza2, adivinanza3]
+aleatorio = random.sample(adivinanzas, 2)  # Creamos un diccionario en donde meter las dos adivinanzas aleatorioas. El procedimiento es el mismo que con el código original.
+puntuacion = 0
 
 if __name__ == '__main__':
-    aciertos = 0
-    for i in adivinanzas:
+    for i in aleatorio:
         while True:
             opcion = input(i['adivinanza']+'\n'+i['opciones']+'\n')
             if opcion.lower() != 'a' and opcion.lower() != 'b' and opcion.lower() != 'c':
@@ -18,11 +21,12 @@ if __name__ == '__main__':
             else:
                 if opcion.lower() == i['correcta']:
                     print('Correcto!! La respuesta es: '+adivinanza1['correcta'])
-                    aciertos = aciertos + 1
+                    puntuacion = puntuacion + 10
                     break
                 else:
                     print('Esa no era la respuesta correcta')
+                    puntuacion = puntuacion - 5
                     break
-    print('Has acertado '+str(aciertos)+' adivinanza(s))')
+    print('Tu puntuación es de '+str(puntuacion)+' puntos')
 
 
