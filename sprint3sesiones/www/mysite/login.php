@@ -41,13 +41,15 @@
         // Si se encuentran datos con ese email:
         if (mysqli_num_rows($result) > 0){
             
-            // Se selecciona la contraseña para ese email y se inrtoduce en una variable.
-            $queryPSSWD = "SELECT contrasenha FROM tUsuarios where email = '".$email."'";
+            // Se selecciona la contraseña e id del usuario para ese email y se introduce en una variable.
+            $queryPSSWD = "SELECT contrasenha,id FROM tUsuarios where email = '".$email."'";
             $result = mysqli_query($db, $queryPSSWD) or die("Fail");
             $hasheo = mysqli_fetch_array($result);
 
             // Se comprueba si la contraseña introducida es la misma que la hasheada.
             if (password_verify($contrasenha, $hasheo[0])){
+                session_start();
+                $_SESSION['user_id'] = $hasheo[1];
                 header('Location: main.php');
             }
             // Si no coinciden se lanza un mensaje de error.
