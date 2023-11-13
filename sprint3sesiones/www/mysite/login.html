@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .registro{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        input{
+            display: block;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="registro">
+        <h1>Login</h1>
+        // Formulario de datos. Se envían a login.php.
+        <form action="login.php" method="post">
+            <input name="f_email" type="text" placeholder="e-mail"><br>
+            <input name="f_password" type="password" placeholder="Contraseña"><br>
+            <input type="submit" value="Iniciar sesión">
+        </form>
+    </div>
+</body>
+</html>

@@ -30,19 +30,24 @@
 </head>
 <body>
     <?php
+
+        // INicialización de variables con los valores de cada elemento del formulario de register.html
         $usuario=$_POST['usuario'];
         $apellidos=$_POST['apellidos'];
         $correo=$_POST['correo'];
         $contrasenha1=$_POST['contrasenha1'];
         $contrasenha2=$_POST['contrasenha2'];
         
-
+        // Se comprueba que no haya ninguna variable vacía. En caso de que las haya, se redirigirá a otra página de error
         if ($usuario == '' or $apellidos == '' or $correo == '' or $contrasenha1 == '' or $contrasenha2 == ''){
             header('Location: error.html');
         }
 
+        // Se crea y se lanza la sentencia SQL a la base de datos 
         $query = "SELECT * FROM tUsuarios where email = '".$correo."'";
         $result = mysqli_query($db, $query) or die('Query Error');
+
+        //En el caso de que haya más de una fila encontrada para el email introducido se lanzará un error diciendo que ya existe ese email.
         if (mysqli_num_rows($result) > 0){
 
             echo "<div class='flexible'>";
@@ -53,6 +58,7 @@
             echo "</div>";
             echo "</div>";
         }
+        // Se comprueba que las contraseñas sean iguales. En caso contrario, se lanzará un error conforme no coinciden.
         elseif ($contrasenha1 != $contrasenha2){
 
             echo "<div class='flexible'>";
@@ -63,14 +69,17 @@
             echo "</div>";
             echo "</div>";
         }
+        //Si todo lo anterior se verifica y está correcto se pasa al else.
         else{
+            // Se hashea la contraseña para dar más seguridad a la hora de introducirla en la base de datos.
             $contrasenha = password_hash($contrasenha1, PASSWORD_DEFAULT);
+            // Se previene una inyección SQL con estas 4 líneas:
             $consulta = $db->prepare("INSERT INTO tUsuarios(nombre, apellidos, email, contrasenha) VALUES (?,?,?,?)");
             $consulta->bind_param("ssss", $usuario, $apellidos, $correo, $contrasenha);
             $consulta->execute();
             $consulta->close();
+            // Con el Header se redirige a la página principal.
             header('Location: main.php');
-            echo "<p>Usuario ".$usuario." añadido.";
         }
 
     mysqli_close($db);

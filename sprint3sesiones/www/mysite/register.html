@@ -10,12 +10,31 @@
         }
         .submit{
             margin-top: 1%;
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+        .submit input:hover{
+            background-color: rgb(71, 204, 228);
         }
         .registro{
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            background-color: #ac8c8c;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input{
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -24,19 +43,18 @@
     <form action="./register.php" method="post" enctype="application/x-www-form-urlencoded">
         <div class="registro">
             <h1>Registro de usuarios</h1>
-            <div>
+
+            <!--DIV con el formulario para el envío de información a register.php-->
+            <div class="cajaRegistro">
                 <label for="usuario">Usuario</label>
                 <input type="text" name="usuario" id="usuario" placeholder="Usuario...">    
                 <label for="apellidos">Apellidos</label>
                 <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos...">
                 <label for="correo">Email</label>
                 <input type="email" name="correo" id="correo" placeholder="Email...">
-            </div>
-            <br>
-            <div>
+            
                 <label for="contrasenha">Contraseña</label>
                 <input type="password" name="contrasenha1" id="contrasenha" placeholder="Contraseña...">
-                <br>
                 <input type="password" name="contrasenha2" placeholder="Repite contraseña...">    
                 
                 <div class="submit">
