@@ -24,6 +24,22 @@
 	    padding: 15px;
 	    border-collapse: collapse;
 	}
+	.overlay {
+      display: none;
+      position: absolute;
+	  width: 50px;
+	  height: 365px;
+      background-color: violet;
+      padding: 8px;
+      border: 1px solid blueviolet;
+      border-radius: 4px;
+      opacity: 0;
+	  transition: opacity 4s ease-in-out;   
+	}
+	tr:hover .overlay {
+      display: block;
+      opacity: 1;
+    }
 	div#log_out{
 		display: inline-block;
 		position: relative;
@@ -62,6 +78,7 @@
 		echo "<td>".$row["nombre"]."</td>";
 		echo "<td>".$row["director"]."</td>";	//Estas son COLUMNAS del nombre, director y género de la película respectivamente
 		echo "<td>".$row["genero"]."</td>";
+		echo "<td class='overlay'></td>";
 		echo "</tr>";
             }
     	   echo "</table>";
