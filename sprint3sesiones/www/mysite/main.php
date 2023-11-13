@@ -7,22 +7,38 @@
 <title>Main</title>
 <meta charset="UTF-8">
 <style>
-        table{
-            border: 2px solid black;
-            background-color: rgb(130, 168, 238) ;
+    table{
+        border: 2px solid black;
+        background-color: rgb(130, 168, 238) ;
 	    margin: auto;
 	    border-collapse: collapse;
-        }
-        th{
+    }
+    th{
 	    border: inherit;
-            background-color: blueviolet;
+        background-color: blueviolet;
 	    border-collapse: collapse;
-        }
+	}
 	td{
 	    border: 2px solid blueviolet;
 	    text-align: center;
 	    padding: 15px;
 	    border-collapse: collapse;
+	}
+	div#log_out{
+		display: inline-block;
+		position: relative;
+		bottom: 1850px;
+		left: 1550px;
+		background-color: rgb(4, 111, 204);
+		border-radius: 5px;
+		padding: 3px;
+		border: 2px solid orange;
+
+	}
+	div#log_out a{
+		text-decoration: none;
+		color: orange;
+		font-weight: bold;
 	}
     </style>
 </head>
@@ -49,6 +65,9 @@
 		echo "</tr>";
             }
     	   echo "</table>";
+		   echo "<div id='log_out'>";
+			echo "<a href='logout.php'>Cerrar sesión</a>";
+		   echo "</div>";
         }
 	?>
 </body>
