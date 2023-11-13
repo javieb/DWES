@@ -65,6 +65,8 @@
 		echo "</tr>";
             }
     	   echo "</table>";
+
+		   // Se añade un contenedor con un enlace para hacer logout.
 		   echo "<div id='log_out'>";
 			echo "<a href='logout.php'>Cerrar sesión</a>";
 		   echo "</div>";

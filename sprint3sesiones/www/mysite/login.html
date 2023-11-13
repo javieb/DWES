@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script defer src="./AlertaFormulario.js"></script>
     <style>
         .registro{
             display: flex;
@@ -20,10 +21,10 @@
 <body>
     <div class="registro">
         <h1>Login</h1>
-        // Formulario de datos. Se envían a login.php.
-        <form action="login.php" method="post">
-            <input name="f_email" type="text" placeholder="e-mail"><br>
-            <input name="f_password" type="password" placeholder="Contraseña"><br>
+        <!-- Formulario de datos. Se envían a login.php. -->
+        <form action="login.php" method="post" id="formulario">
+            <input id="f_email" name="f_email" type="text" placeholder="e-mail"><br>
+            <input id="f_password" name="f_password" type="password" placeholder="Contraseña"><br>
             <input type="submit" value="Iniciar sesión">
         </form>
     </div>
