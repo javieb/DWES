@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efecto Fade-In en Hover para Filas de Tabla</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    tr:hover td {
+      opacity: 1;
+      background-color: green;
+    }
+
+    td {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+<table>
+  <thead>
+    <tr>
+      <th>Encabezado 1</th>
+      <th>Encabezado 2</th>
+      <th>Encabezado 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Dato 1</td>
+      <td>Dato 2</td>
+      <td>Dato 3</td>
+    </tr>
+    <tr>
+      <td>Dato 4</td>
+      <td>Dato 5</td>
+      <td>Dato 6</td>
+    </tr>
+    <!-- Agrega más filas según sea necesario -->
+  </tbody>
+</table>
+
+</body>
+</html>

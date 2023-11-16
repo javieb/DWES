@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{
+            background-image: url(./Imagenes/Cinema.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+
+        }
         label{
             display: block;
         }
         .submit{
             margin-top: 1%;
-            background-color: #4caf50;
             color: #fff;
             cursor: pointer;
         }
@@ -18,13 +24,20 @@
             background-color: rgb(71, 204, 228);
         }
         .registro{
+            position:fixed;
+            left: 38%;
+            top: 47%;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-color: #ac8c8c;
+            overflow: scroll;
+            width: 500px;
+            height:380px;
+            background-color: #c42b2b;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 8px 8px 20px 1px black;
         }
         input{
             display: block;
@@ -32,6 +45,7 @@
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
+            width: 250px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -41,25 +55,22 @@
 <body>
 
     <form action="./register.php" method="post" enctype="application/x-www-form-urlencoded">
-        <div class="registro">
-            <h1>Registro de usuarios</h1>
 
-            <!--DIV con el formulario para el envío de información a register.php-->
-            <div class="cajaRegistro">
-                <label for="usuario">Usuario</label>
-                <input type="text" name="usuario" id="usuario" placeholder="Usuario...">    
-                <label for="apellidos">Apellidos</label>
-                <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos...">
-                <label for="correo">Email</label>
-                <input type="email" name="correo" id="correo" placeholder="Email...">
-            
-                <label for="contrasenha">Contraseña</label>
-                <input type="password" name="contrasenha1" id="contrasenha" placeholder="Contraseña...">
-                <input type="password" name="contrasenha2" placeholder="Repite contraseña...">    
-                
-                <div class="submit">
-                    <input type="submit">
-                </div>
+        <!--DIV con el formulario para el envío de información a register.php-->
+        <div class="registro">
+            <label for="usuario">Usuario</label>
+            <input type="text" name="usuario" id="usuario" placeholder="Usuario...">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos...">
+            <label for="correo">Email</label>
+            <input type="email" name="correo" id="correo" placeholder="Email...">
+
+            <label for="contrasenha">Contraseña</label>
+            <input type="password" name="contrasenha1" id="contrasenha" placeholder="Contraseña...">
+            <input type="password" name="contrasenha2" placeholder="Repite contraseña...">
+
+            <div class="submit">
+                <input type="submit">
             </div>
         </div>
     </form>

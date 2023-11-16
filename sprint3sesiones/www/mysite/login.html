@@ -6,6 +6,11 @@
     <title>Document</title>
     <script defer src="./AlertaFormulario.js"></script>
     <style>
+        body{
+            background-image: url(./Imagenes/BackgroundMain.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
         .registro{
             display: flex;
             justify-content: center;
@@ -16,17 +21,37 @@
             display: block;
             margin-bottom: 2px;
         }
+        #loginImage{
+            position: relative;
+            bottom: 50px;
+            height: 350px;
+            width: auto;
+        }
+        .login{
+            text-align: center;
+            width: 500px;
+            height:200px;
+            background-color: #c42b2b;
+            border-radius: 8px;
+            box-shadow: 8px 8px 20px 1px black;
+        }
+        .login input{
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
     <div class="registro">
-        <h1>Login</h1>
+        <img src="./Imagenes/Movie-PNG-Free-Image.png" alt="loginImage" id="loginImage">
+        <div class="login">
+            <h1>Login</h1>
         <!-- Formulario de datos. Se envían a login.php. -->
-        <form action="login.php" method="post" id="formulario">
-            <input id="f_email" name="f_email" type="text" placeholder="e-mail"><br>
-            <input id="f_password" name="f_password" type="password" placeholder="Contraseña"><br>
-            <input type="submit" value="Iniciar sesión">
-        </form>
+            <form action="login.php" method="post" id="formulario">
+                <input id="f_email" name="f_email" type="text" placeholder="e-mail"><br>
+                <input id="f_password" name="f_password" type="password" placeholder="Contraseña"><br>
+                <input type="submit" value="Iniciar sesión">
+            </form>
+        </div>
     </div>
 </body>
 </html>

@@ -7,6 +7,9 @@
 <title>Main</title>
 <meta charset="UTF-8">
 <style>
+	body{
+		background-image: url(./Imagenes/BackgroundMain.png);
+	}
     table{
         border: 2px solid black;
         background-color: rgb(130, 168, 238) ;
@@ -22,24 +25,18 @@
 	    border: 2px solid blueviolet;
 	    text-align: center;
 	    padding: 15px;
-	    border-collapse: collapse;
+		opacity: 0.3;
+		transition: opacity 0.5s ease-in-out;
 	}
-	.overlay {
-      display: none;
-      position: absolute;
-	  width: 50px;
-	  height: 365px;
-      background-color: violet;
-      padding: 8px;
-      border: 1px solid blueviolet;
-      border-radius: 4px;
-      opacity: 0;
-	  transition: opacity 4s ease-in-out;   
-	}
-	tr:hover .overlay {
-      display: block;
+	tr:hover td{
       opacity: 1;
+	  background-color: #BCE03F;
+	  color: #AB40E1;
+	  text-shadow: 1px 1px black;
+	  font-size: 18px;
+	  font-weight: bold;
     }
+
 	div#log_out{
 		display: inline-block;
 		position: relative;
@@ -49,9 +46,24 @@
 		border-radius: 5px;
 		padding: 3px;
 		border: 2px solid orange;
-
 	}
 	div#log_out a{
+		text-decoration: none;
+		color: orange;
+		font-weight: bold;
+	}
+	div#contrasenha{
+		display: inline-block;
+		position: relative;
+		bottom: 1800px;
+		left: 1400px;
+		background-color: rgb(4, 111, 204);
+		border-radius: 5px;
+		padding: 3px;
+		border: 2px solid orange;
+
+	}
+	div#contrasenha a{
 		text-decoration: none;
 		color: orange;
 		font-weight: bold;
@@ -78,7 +90,6 @@
 		echo "<td>".$row["nombre"]."</td>";
 		echo "<td>".$row["director"]."</td>";	//Estas son COLUMNAS del nombre, director y género de la película respectivamente
 		echo "<td>".$row["genero"]."</td>";
-		echo "<td class='overlay'></td>";
 		echo "</tr>";
             }
     	   echo "</table>";
@@ -86,6 +97,10 @@
 		   // Se añade un contenedor con un enlace para hacer logout.
 		   echo "<div id='log_out'>";
 			echo "<a href='logout.php'>Cerrar sesión</a>";
+		   echo "</div>";
+
+		   echo "<div id='contrasenha'>";
+			echo "<a href='MainContrasenha.php'>Cambiar contraseña</a>";
 		   echo "</div>";
         }
 	?>

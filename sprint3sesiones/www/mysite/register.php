@@ -44,15 +44,20 @@
         }
 
         // Se crea y se lanza la sentencia SQL a la base de datos 
-        $query = "SELECT * FROM tUsuarios where email = '".$correo."'";
-        $result = mysqli_query($db, $query) or die('Query Error');
+        $consulta = $db->prepare("SELECT * FROM tUsuarios where email = ?");
+        $consulta->bind_param("s", $correo);
+        $consulta->execute();
 
+        $result = mysqli_fetch_array($consulta -> get_result());
+
+        $consulta->close();
+        
         //En el caso de que haya más de una fila encontrada para el email introducido se lanzará un error diciendo que ya existe ese email.
         if (mysqli_num_rows($result) > 0){
 
             echo "<div class='flexible'>";
             echo "<div class='error'>";
-            echo   "<img src='./advertencia.png' alt='advertencia'>";
+            echo   "<img src='./Imagenes/advertencia.png' alt='advertencia'>";
             echo   "<h2>¡ El correo ya existe !</h2>";
             echo  "<a href='register.html'>Reintentar registro</a>";
             echo "</div>";
@@ -63,7 +68,7 @@
 
             echo "<div class='flexible'>";
             echo "<div class='error'>";
-            echo   "<img src='./advertencia.png' alt='advertencia'>";
+            echo   "<img src='./Imagenes/advertencia.png' alt='advertencia'>";
             echo   "<h2>¡ Las contraseñas no coinciden !</h2>";
             echo  "<a href='register.html'>Reintentar registro</a>";
             echo "</div>";

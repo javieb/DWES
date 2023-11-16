@@ -34,17 +34,29 @@
         $email = $_POST['f_email'];
         $contrasenha = $_POST['f_password'];
 
+
         // Se lanza la sentencia SQL para el email
-        $queryEMAIL = "SELECT * FROM tUsuarios where email = '".$email."'";
-        $result = mysqli_query($db, $queryEMAIL) or die("Query Error");
+        $consulta = $db->prepare("SELECT * FROM tUsuarios where email = ?");
+        $consulta->bind_param("s", $email);
+        $consulta->execute();
+
+        $result = $consulta -> get_result();
+
+        $consulta->close();
 
         // Si se encuentran datos con ese email:
         if (mysqli_num_rows($result) > 0){
             
             // Se selecciona la contraseña e id del usuario para ese email y se introduce en una variable.
-            $queryPSSWD = "SELECT contrasenha,id FROM tUsuarios where email = '".$email."'";
-            $result = mysqli_query($db, $queryPSSWD) or die("Fail");
+
+            $consulta = $db->prepare("SELECT contrasenha,id FROM tUsuarios where email = ?");
+            $consulta->bind_param("s", $email);
+            $consulta->execute();
+
+            $result = $consulta -> get_result();
             $hasheo = mysqli_fetch_array($result);
+
+            $consulta->close();
 
             // Se comprueba si la contraseña introducida es la misma que la hasheada.
             if (password_verify($contrasenha, $hasheo[0])){
@@ -56,7 +68,7 @@
             else{
                 echo "<div class='flexible'>";
                 echo "<div class='error'>";
-                echo   "<img src='./advertencia.png' alt='advertencia'>";
+                echo   "<img src='./Imagenes/advertencia.png' alt='advertencia'>";
                 echo   "<h2>¡ La contraseña es incorrecta!</h2>";
                 echo  "<a href='login.html'>Reintentar login</a><br>";
                 echo  "<a href='main.php'>Inicio</a>";
@@ -70,7 +82,7 @@
         else{
             echo "<div class='flexible'>";
             echo "<div class='error'>";
-            echo   "<img src='./advertencia.png' alt='advertencia'>";
+            echo   "<img src='./Imagenes/advertencia.png' alt='advertencia'>";
             echo   "<h2>¡ El correo no existe !</h2>";
             echo  "<a href='login.html'>Reintentar login</a><br>";
             echo  "<a href='main.php'>Inicio</a>";

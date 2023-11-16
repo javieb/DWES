@@ -6,20 +6,20 @@
     <meta charset="UTF-8">
     <style>
        *{
-	text-align: center;
+			text-align: center;
        }
-       h1{
-        text-align: center;
-        color: black;
-        background-color: bisque;
-	width: 300px;
-	margin: auto;
-	margin-bottom: 20px;
+    	h1{
+        	text-align: center;
+        	color: black;
+        	background-color: bisque;
+			width: 300px;
+			margin: auto;
+			margin-bottom: 20px;
 
-       }
+        }
        #cajaComentarios *{
-		text-align: left;
-	}
+			text-align: left;
+		}
     </style>
 </head>
 <body>
