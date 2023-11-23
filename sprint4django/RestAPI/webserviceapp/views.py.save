@@ -1,0 +1,17 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+
+from .models import Tpeliculas
+# Create your views here.
+
+def pagina_de_prueba(request):
+	return HttpResponse("<h1>Hola caracola</h1>");
+
+def devolver_canciones(request):
+	lista = Tpeliculas.objects.all()
+	respuesta_final = []
+
+	for fila_sql in lista:
+		diccionario = {}
+		diccionario['id'] = fila_sql.id_pelicula
+		diccionario['titulo'] = fila_sql.id
